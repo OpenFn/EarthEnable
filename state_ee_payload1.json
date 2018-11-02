@@ -1,0 +1,17 @@
+{
+  "configuration": {
+  },
+  "data" : {
+    "welcome": "780",
+    "Merchant_code": "6",
+    "type": "Payment",
+    "District": "Bugesera",
+    "reference_number": "8383",
+    "house_number": "8273",
+    "contract_number": "7274",
+    "payment_number": "8283",
+    "amount": "922",
+    "msisdn": "250788575522",
+    "session": "15409984359533848"
+  }
+}
