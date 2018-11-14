@@ -25,9 +25,7 @@ state => {
   state.contractId = `${houseId}-${contract_number}`;
   state.paymentId = `${state.contractId}-${payment_number}`;
 
-  return state;
-
-  upsert('Payment__c', 'EE_Payment_ID__c', fields(
+  return upsert('Payment__c', 'EE_Payment_ID__c', fields(
     field("EE_Payment_ID__c", state.paymentId),
     relationship("Associated_Phase_Contract__r", "EE_Contract_ID__c", state.contractId),
     field("Amount_of_Payment__c", dataValue("amount")),
