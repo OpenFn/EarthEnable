@@ -3,10 +3,10 @@ upsert('Payment__c', 'EE_Payment_ID__c', fields(
   	/*
   	return state.data.reference_number + "-" + state.data.payment_number
   	*/
-  	
+
   	////Added below to generate lookup reference Id for payments ****
    const msisdn = (state.data.msisdn.substr(0,3) == "250" ? 'RW' : 'Msisdn code not found' );
-   
+
    function findDistrict(dis) {
     	const districtFIND = {
     		Bugesera : 'BT',
