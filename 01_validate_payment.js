@@ -7,13 +7,6 @@ alterState(state => {
     contract_number,
     payment_number
   } = state.data;
-  const countryCode = (msisdn.substr(0, 3) == "250" ? 'RW' : 'Msisdn code not found');
-  const dist = state.districts[District];
-  const date = new Date().getFullYear().toString().substr(-2);
-  const houseId = `${countryCode}${dist}${date}-${reference_number}-${house_number}`;
-
-  state.contractId = `${houseId}-${contract_number}`;
-  state.paymentId = `${contractId}-${payment_number}`;
 
   state.districts = {
     Bugesera: 'BG',
@@ -23,6 +16,14 @@ alterState(state => {
     Ngoma: 'NG',
     Rwamagana: 'RW'
   };
+  
+  const countryCode = (msisdn.substr(0, 3) == "250" ? 'RW' : 'Msisdn code not found');
+  const dist = state.districts[District];
+  const date = new Date().getFullYear().toString().substr(-2);
+  const houseId = `${countryCode}${dist}${date}-${reference_number}-${house_number}`;
+
+  state.contractId = `${houseId}-${contract_number}`;
+  state.paymentId = `${contractId}-${payment_number}`;
 
   return state;
 })
