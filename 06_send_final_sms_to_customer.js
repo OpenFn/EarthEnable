@@ -1,8 +1,3 @@
-alterState(state =>{
-  console.log(state);
-  return state;
-});
-
 get('/sendsms/earthenable', {
   query: {
     api_token: state.configuration.password,
