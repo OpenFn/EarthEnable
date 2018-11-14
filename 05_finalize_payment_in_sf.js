@@ -24,13 +24,13 @@
 // });
 
 alterState(state => {
-  console.log(state.data.Envelope.Body.notifications.Notification.sObject);
+  console.log(state.references[0].Envelope.Body.notifications.Notification.sObject);
   return state;
-})
+});
 
 steps(
   upsert('Payment__c', 'EE_Payment_ID__c', fields(
-    field("EE_Payment_ID__c", state.data.Envelope.Body.notifications.Notification.sObject.EE_Payment_ID__c),
+    field("EE_Payment_ID__c", state.references[0].Envelope.Body.notifications.Notification.sObject.EE_Payment_ID__c),
     field("Payment_status__c", state.data.transactionStatus)
   )),
   query(
