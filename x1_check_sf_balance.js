@@ -30,7 +30,6 @@ alterState(state => {
 });
 
 alterState(state => {
-  console.log(state.references[0].records)
   state.contractData = state.references[0].records[0]
   return state;
 });
