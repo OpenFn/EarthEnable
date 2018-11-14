@@ -1,13 +1,12 @@
-steps(
-  // First update the paymnent status.
-  upsert('Payment__c', 'EE_Payment_ID__c', fields(
-    field("EE_Payment_ID__c", state.references[0].Envelope.Body.notifications.Notification.sObject.EE_Payment_ID__c),
-    field("Payment_status__c", state.data.transactionStatus)
-  )),
-  query(
-    // Then fetch the new customer data to send in SMS.
-    `SELECT Total_Amount_Paid__c, Amount_to_left_to_pay_pre_sand_delivery__c, Total_Amount_Left_to_Pay__c FROM Phase_Contract__c WHERE EE_Contract_ID__c = '${state.references[0].Envelope.Body.notifications.Notification.sObject.EE_Payment_ID__c}'`
-  )
+// First update the paymnent status.
+upsert('Payment__c', 'EE_Payment_ID__c', fields(
+  field("EE_Payment_ID__c", state.references[0].Envelope.Body.notifications.Notification.sObject.EE_Payment_ID__c),
+  field("Payment_status__c", state.data.transactionStatus)
+));
+
+query(
+  // Then fetch the new customer data to send in SMS.
+  `SELECT Total_Amount_Paid__c, Amount_to_left_to_pay_pre_sand_delivery__c, Total_Amount_Left_to_Pay__c FROM Phase_Contract__c WHERE EE_Contract_ID__c = '${state.references[0].Envelope.Body.notifications.Notification.sObject.EE_Payment_ID__c}'`
 );
 
 alterState(state => {
