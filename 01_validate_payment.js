@@ -1,4 +1,4 @@
-state => {
+alterState(state => {
   const {
     msisdn,
     District,
@@ -32,4 +32,4 @@ state => {
     field("Payment_status__c", "INITIATED"),
     field("Date_Payment_Received_in_Bank__c", Date.now())
   ))(state);
-}
+});
