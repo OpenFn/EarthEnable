@@ -18,4 +18,5 @@ get('/sendsms/earthenable', {
     api_token: state.configuration.password,
     receiver: parseInt(state.references[2].Envelope.Body.notifications.Notification.sObject.Payment_MSISDN__c),
     message: state.messageText,
+  }
 });
