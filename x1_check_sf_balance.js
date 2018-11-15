@@ -24,9 +24,12 @@ alterState(state => {
   state.contractId = `${houseId}-${contract_number}`;
   console.log(`Searching for contract ID: ${state.contractId}`);
 
-  return query(
-    `SELECT Total_Amount_Paid__c, Amount_to_left_to_pay_pre_sand_delivery__c, Total_Amount_Left_to_Pay__c FROM Phase_Contract__c WHERE EE_Contract_ID__c = '${state.contractId}'`
-  )(state);
+  return query(`
+    SELECT Total_Amount_Paid__c, Amount_to_left_to_pay_pre_sand_delivery__c,
+      Total_Amount_Left_to_Pay__c
+    FROM Phase_Contract__c
+    WHERE EE_Contract_ID__c = '${state.contractId}'
+  `)(state);
 });
 
 alterState(state => {
