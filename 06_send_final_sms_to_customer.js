@@ -1,7 +1,7 @@
 get('/sendsms/earthenable', {
   query: {
     api_token: state.configuration.password,
-    receiver: parseInt(state.references[2].Envelope.Body.notifications.Notification.sObject.MSISDN__c),
+    receiver: parseInt(state.references[2].Envelope.Body.notifications.Notification.sObject.Payment_MSISDN__c),
     message: (state) => {
       if (!state.paymentSuccess) {
         return `Your payment of ${state.references[2].Envelope.Body.notifications.Notification.sObject.Amount_of_Payment__c} was not able to be completed and your account has not been charged. Please try again.`
