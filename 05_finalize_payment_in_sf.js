@@ -6,9 +6,12 @@ steps(
     field('Paid__c', (state.data.transactionStatus === 'APPROVED' ? true : false))
   )),
   // Then fetch contract data...
-  query(
-    `SELECT Total_Amount_Paid__c, Amount_to_left_to_pay_pre_sand_delivery__c, Total_Amount_Left_to_Pay__c FROM Phase_Contract__c WHERE Id = '${state.sfData.Associated_Phase_Contract__c}'`
-  ),
+  query(```
+    SELECT Total_Amount_Paid__c, Amount_to_left_to_pay_pre_sand_delivery__c,
+      Total_Amount_Left_to_Pay__c
+    FROM Phase_Contract__c
+    WHERE Id = '${state.sfData.Associated_Phase_Contract__c}'
+  ```),
   // Finally prepare for message sending...
   alterState(state => {
     state.paymentSuccess = (state.data.transactionStatus === "APPROVED")
