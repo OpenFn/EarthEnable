@@ -13,6 +13,7 @@ query(
 );
 
 alterState(state => {
+  state.paymentSuccess = (state.data.transactionStatus === "APPROVED")
   state.contractData = state.references[0].records[0]
   // state.paymentData = state.references[1].records[0]
   return state;
