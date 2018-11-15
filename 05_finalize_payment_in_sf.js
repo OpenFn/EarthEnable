@@ -2,7 +2,8 @@ steps(
   // First update the paymnent status...
   upsert('Payment__c', 'EE_Payment_ID__c', fields(
     field("EE_Payment_ID__c", state.sfData.EE_Payment_ID__c),
-    field("Payment_status__c", state.data.transactionStatus)
+    field("Payment_status__c", state.data.transactionStatus),
+    field('Paid__c', (state.data.transactionStatus === 'APPROVED' ? true : false))
   )),
   // Then fetch contract data...
   query(
