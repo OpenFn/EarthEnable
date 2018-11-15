@@ -7,10 +7,10 @@ post("https://api.havanao.com/api/sale/purchase", {
   },
   body: (state) => {
     const postBody = {
-      "transactionid": state.paymentId,
-      "amount": parseInt(state.data.amount),
-      "customer": state.data.msisdn,
-      "comment": "Thanks for initiating an EarthEnable payment."
+      transactionid: state.paymentId,
+      amount: parseInt(state.data.amount),
+      customer: state.data.msisdn,
+      comment: 'Thanks for initiating an EarthEnable payment.'
     };
     return postBody;
   }
