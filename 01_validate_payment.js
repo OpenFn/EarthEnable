@@ -28,8 +28,9 @@ alterState(state => {
   return upsert('Payment__c', 'EE_Payment_ID__c', fields(
     field("EE_Payment_ID__c", state.paymentId),
     relationship("Associated_Phase_Contract__r", "EE_Contract_ID__c", state.contractId),
-    field("Amount_of_Payment__c", dataValue("amount")),
-    field("Payment_status__c", "INITIATED"),
+    field("Amount_of_Payment__c", dataValue('amount')),
+    field("Payment_status__c", 'INITIATED'),
+    field("Payment_MSISDN__c", dataValue('msisdn')),
     field("Date_Payment_Received_in_Bank__c", Date.now())
   ))(state);
 });
